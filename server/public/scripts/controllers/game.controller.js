@@ -1,8 +1,16 @@
 colorBlocks.controller('GameController', ['$http', 'DataFactory', function($http, DataFactory) {
+// NOTE:  dependancy injector is first line
+
 console.log('game controller running');
 
-var self = this;
-self.colors = DataFactory.allColors;
+var self = this; // NOTE: this is GameController
+self.colors = DataFactory.colorArray; // .colors must match html
+// NOTE: GameController is dependant on DataFactory.  This requires
+// NOTE: gameview.html/.colors must match GameController.js/self.colors
+// NOTE: self.colors gets from controller to the DOM
+// NOTE: DataFactory.colorArray gets from DataFactory.js to the controlloer
+
+
 
 // start game
 init();
